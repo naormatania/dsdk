@@ -7,7 +7,7 @@ import pytorch as torch
 class clr:
     S = '\033[1m' + '\033[91m'
     E = '\033[0m'
-    
+
     @staticmethod
     def color(cls, text):
         return cls.S + text + cls.E
@@ -21,5 +21,6 @@ def set_seed(seed = 1234):
     torch.cuda.manual_seed(seed)
     # When running on the CuDNN backend, two further options must be set
     torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
     # Set a fixed value for the hash seed
     os.environ['PYTHONHASHSEED'] = str(seed)
